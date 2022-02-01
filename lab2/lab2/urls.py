@@ -23,9 +23,10 @@ urlpatterns = [
     path('about/', about, name="about"),
     path('login/', login, name="login"),
     path('contact/', contact, name="contact"),
-    path('liststudent', home, name="liststudent"),
     path('', home, name="home"),
+    path('updatestudent/<id>/', updatestudent, name="updatestudent"),
     path('createstudent/', createstudent, name="createstudent"),
     path('deletestudent/<id>/', deletestudent, name="deletestudent"),
+    path('searchstudent/', searchstudent, name="searchstudent"),
 
 ]

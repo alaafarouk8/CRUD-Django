@@ -35,7 +35,7 @@ def login(request):
 
         is_user_exist = myUser.objects.all().filter(email=email, password=password)
         if is_user_exist:
-            return render(request, 'home.html')
+            return redirect("home")
         else:
             return redirect("login")
 
