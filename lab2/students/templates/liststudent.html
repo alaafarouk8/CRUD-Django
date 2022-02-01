@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{%extends 'navbar.html'%}
+{% block Title %}
+Home
+{% endblock %}
 
-</body>
-</html>
+{%block content%}
+<div class="container bg-light" style="margin:10px">
+    <table class="table w-50 mx-auto">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+             <th>username</th>
+            <th>email</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td> {{ student.id }}</td>
+            <td> {{ student.name }}</td>
+             <td> {{ student.username}}</td>
+            <td> {{ student.email}}</td>
+            <td><a class="btn btn-dark" style="width:100px" >Delete Student</a></td>
+            <td>
+                <a class="btn btn-dark" style="width:100px"  >Update Student</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{%endblock%}

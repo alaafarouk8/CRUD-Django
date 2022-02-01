@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'lab2.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangodatabase',
+        'NAME': 'django',
         'USER': 'postgres',
         'PASSWORD': 'alaafarouk812',
         'HOST': 'localhost',

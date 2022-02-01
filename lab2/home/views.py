@@ -18,6 +18,8 @@ def register(request):
 def about(request):
     return render(request, 'about.html')
 
+def liststudent(request):
+    return render(request, 'liststudent.html')
 
 def home(request):
     return render(request, 'home.html')
