@@ -1,0 +1,33 @@
+{%extends 'navbar.html'%}
+{% block Title %}
+Sign Up
+{% endblock %}
+
+{%block content%}
+<div class="container-fluid bg-light  justify-content-center"
+     style="width:500px ; border-radius:40px; margin:50px ; padding:50px">
+    <form method="post">
+
+        <div class="mb-3">
+            <h2>
+                Register
+            </h2>
+        </div>
+        {%csrf_token%}
+        <div class="mb-3">
+            <input class="form-control" class="username" id="username" placeholder="Enter Your Name" required
+                   style="border-radius:15px;" type="username">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" class="email" id="email" placeholder="Enter Your Email" required
+                   style="border-radius:15px;" type="email">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" class="password" id="password" placeholder="Enter Your Password" required
+                   style="border-radius:15px;" type="password">
+        </div>
+        <button class="btn btn-dark" style="border-radius:15px;" type="submit">Sign Up</button>
+    </form>
+</div>
+
+{%endblock%}
