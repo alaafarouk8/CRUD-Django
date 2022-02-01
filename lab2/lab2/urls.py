@@ -29,5 +29,6 @@ urlpatterns = [
     path('createstudent/', createstudent, name="createstudent"),
     path('deletestudent/<id>/', deletestudent, name="deletestudent"),
     path('searchstudent/', searchstudent, name="searchstudent"),
+    path('logout/', logout, name='logout'),
 
 ]
