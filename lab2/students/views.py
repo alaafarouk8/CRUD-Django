@@ -42,6 +42,11 @@ def deletestudent(request, id):
         return render(request, 'createstudent.html', context)
     else:
         return render(request, 'home.html')
+def liststudent(request):
+    student = Student.objects.all()
+    context = {'students': student}
+    return render(request, 'liststudent.html', context)
+
 
 
 def updatestudent(request,id):

@@ -4,13 +4,15 @@ Home
 {% endblock %}
 
 {%block content%}
-<div class="container bg-light" style="margin:10px">
-    <table class="table w-50 mx-auto">
+<div class="container bg-light" style="margin:100px ; border-radius:40px; padding:30px">
+    <h1> List of The Students</h1>
+  <div class="container bg-light justify-content-center" >
+    <table class="table table-striped ">
         <tr>
             <th>Id</th>
             <th>Name</th>
-             <th>username</th>
-            <th>email</th>
+            <th>Username</th>
+            <th>Email</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
@@ -18,14 +20,27 @@ Home
         <tr>
             <td> {{ student.id }}</td>
             <td> {{ student.name }}</td>
-             <td> {{ student.username}}</td>
+            <td> {{ student.username}}</td>
             <td> {{ student.email}}</td>
-            <td><a class="btn btn-dark" style="width:100px" >Delete Student</a></td>
+            <td><a class="btn btn-outline-dark" href="{%url 'deletestudent' student.id%}"
+                   style="border-radius:15px;width:250px">Delete
+                Student</a></td>
             <td>
-                <a class="btn btn-dark" style="width:100px"  >Update Student</a>
+                <form action="{%url 'updatestudent' student.id%}" method="post">
+                    {%csrf_token%}
+                    <div class="mb-3">
+                        <input class="form-control" name="username" placeholder="Enter Your Name" required
+                               style="border-radius:15px; width:250px" type="name">
+                    </div>
+
+                    <button class="btn btn-outline-dark" style="border-radius:15px;width:250px" type="submit">Update
+                        Student
+                    </button>
+                </form>
             </td>
         </tr>
         {% endfor %}
     </table>
+</div>
 </div>
 {%endblock%}
