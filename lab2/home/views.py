@@ -30,13 +30,12 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         print(email, "  Password ", password)
-        intakes = myUser.objects.all()
-        for intake in intakes:
-            print({intake.email})
-            if intake.email == email and intake.password == password:
-                return render(request, 'home.html')
-            else:
-                return redirect("login")
+
+        is_user_exist = myUser.objects.all().filter(email=email, password=password)
+        if is_user_exist:
+            return render(request, 'home.html')
+        else:
+            return redirect("login")
 
 
 def contact(request):

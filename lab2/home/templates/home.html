@@ -5,6 +5,23 @@ Home
 
 {%block content%}
 <div class="container-fluid bg-light  justify-content-center" style="width:500px ; border-radius:10px; margin:50px ; padding:50px">
-   <h1>Home</h1>
+   <div class="row">
+        <h1>Welcome</h1>
+        <div class="mb-3">
+           <a href="{%url 'createstudent'%}" style="border-radius:15px;" class="btn btn-dark">Create Student</a>
+        </div>
+       <div class="mb-3">
+           <a href="" style="border-radius:15px;" class="btn btn-dark">Update Student</a>
+        </div>
+       <div class="mb-3">
+           <a href="" style="border-radius:15px;" class="btn btn-dark">Delete Student</a>
+        </div>
+       <div class="mb-3">
+           <a href="" style="border-radius:15px;" class="btn btn-dark">Search Student</a>
+        </div>
+       <div class="mb-3">
+           <a href="" style="border-radius:15px;" class="btn btn-dark">List Student</a>
+        </div>
+   </div>
 </div>
 {%endblock%}

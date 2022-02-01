@@ -1,0 +1,33 @@
+{%extends 'navbar.html'%}
+{% block Title %}
+Create Student
+{% endblock %}
+
+{%block content%}
+<div class="container-fluid bg-light  justify-content-center"
+     style="width:500px ; border-radius:40px; margin:50px ; padding:50px">
+    <form method="post">
+        {%csrf_token%}
+        <div class="mb-3">
+            <h2>
+                Create Student
+            </h2>
+        </div>
+          <div class="mb-3">
+            <input class="form-control" name="username"  placeholder="Enter Your User Name" required
+                   style="border-radius:15px;" type="username">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" name="name"  placeholder="Enter Your Name" required
+                   style="border-radius:15px;" type="username">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" name="email" placeholder="Enter Your Email" required
+                   style="border-radius:15px;" type="email">
+        </div>
+
+        <button class="btn btn-dark" style="border-radius:15px;" type="submit">Create Student</button>
+    </form>
+</div>
+
+{%endblock%}

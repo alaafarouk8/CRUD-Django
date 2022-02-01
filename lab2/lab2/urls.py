@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import *
+from students.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register,name="register"),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('login/', login, name="login"),
     path('contact/', contact, name="contact"),
     path('', home, name="home"),
+    path('createstudent/', createstudent, name="createstudent"),
+
 ]
