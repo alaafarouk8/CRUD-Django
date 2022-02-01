@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Intake
+from .models import myUser
 
 
 # Create your views here.
@@ -12,8 +12,9 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        Intake.objects.create(username=username, email=email, password=password)
+        myUser.objects.create(username=username, email=email, password=password)
         return redirect("login")
+
 def about(request):
     return render(request, 'about.html')
 
@@ -26,14 +27,14 @@ def login(request):
     if (request.method == 'GET'):
         return render(request, 'login.html')
     else:
-        email = request.POST.get('email', "")
-        password = request.POST.get('password', "")
+        email = request.POST['email']
+        password = request.POST['password']
         print(email, "  Password ", password)
-        intakes = Intake.objects.all()
-        print({intakes})
+        intakes = myUser.objects.all()
         for intake in intakes:
+            print({intake.email})
             if intake.email == email and intake.password == password:
-                return redirect("home")
+                return render(request, 'home.html')
             else:
                 return redirect("login")
 
