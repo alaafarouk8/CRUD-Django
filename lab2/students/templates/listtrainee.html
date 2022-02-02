@@ -1,0 +1,22 @@
+{%extends 'navbar.html'%}
+
+{%block content%}
+<!--{{num |add:2}}-->
+
+    <table width="100%" border="1">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Actions</td>
+        </tr>
+        {%for intake in  intakes%}
+             <tr>
+                <td>{{intake.id}}</td>
+                <td>{{intake.name}}</td>
+                 <td>
+                 </td>
+             </tr>
+    {%endfor%}
+    </table>
+
+{%endblock%}

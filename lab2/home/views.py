@@ -30,8 +30,6 @@ def liststudent(request):
 def home(request):
     return render(request, 'home.html')
 
-
-
 def login(request):
     if (request.method == 'GET'):
         return render(request, 'login.html')
@@ -39,8 +37,6 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         print(email, "  Password ", password)
-        user = myUser.objects.get(email=email, password=password)
-        admin_user = authenticate(username=user.username, password=password)
         try:
             user = myUser.objects.get(email=email, password=password)
             admin_user = authenticate(username=user.username, password=password)

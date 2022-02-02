@@ -17,18 +17,21 @@ from django.contrib import admin
 from django.urls import path
 from home.views import *
 from students.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', register,name="register"),
+    path('register/', register, name="register"),
     path('about/', about, name="about"),
     path('login/', login, name="login"),
     path('contact/', contact, name="contact"),
     path('', home, name="home"),
     path('liststudent/', liststudent, name="liststudent"),
     path('updatestudent/<id>/', updatestudent, name="updatestudent"),
-    path('createstudent/', createstudent, name="createstudent"),
+    path('createstudent/', insertStudentformmodelclass.as_view(), name="createstudent"),
     path('deletestudent/<id>/', deletestudent, name="deletestudent"),
     path('searchstudent/', searchstudent, name="searchstudent"),
     path('logout/', logout, name='logout'),
+    path('Tracklist/', TrackList.as_view(), name="TrackList"),
+    path('TrackCreateView', TrackCreateView.as_view(), name='TrackCreateView'),
 
 ]
