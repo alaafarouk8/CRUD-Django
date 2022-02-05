@@ -13,6 +13,7 @@ Home
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Track</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
@@ -22,6 +23,7 @@ Home
             <td> {{ student.name }}</td>
             <td> {{ student.username}}</td>
             <td> {{ student.email}}</td>
+             <td> {{ student.trackname}}</td>
             <td><a class="btn btn-outline-dark" href="{%url 'deletestudent' student.id%}"
                    style="border-radius:15px;width:250px">Delete
                 Student</a></td>
