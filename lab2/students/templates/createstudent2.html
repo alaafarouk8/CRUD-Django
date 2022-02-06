@@ -8,12 +8,12 @@ Create Student
      style="width:500px ; border-radius:40px; margin:50px ; padding:50px">
     <div class="mb-3">
         <h2>
-            Create Student With Model Class
+            Create Student With Model
         </h2>
     </div>
     <form method="post">
         {%csrf_token%}
-        {{GUI.as_p}}
+        {{form.as_p}}
         <input class="btn btn-dark" style="border-radius:15px;" type="submit" value="Create Student">
     </form>
 </div>
@@ -54,38 +54,4 @@ Create Student
     </table>
 </div>
 
-<div class="container-fluid bg-light  justify-content-center"
-     style="width:500px ; border-radius:40px; margin:50px ; padding:50px">
-    <form action="{%url 'searchstudent'%}" method="get">
-        <div class="mb-3">
-            <h2>
-                Search Student
-            </h2>
-        </div>
-        <div class="mb-3">
-            <input class="form-control" name="username" placeholder="Enter Your User Name" required
-                   style="border-radius:15px;" type="username">
-        </div>
-
-        <button class="btn btn-dark" style="border-radius:15px;" type="submit">Search Student</button>
-    </form>
-</div>
-<div class="container bg-light" style="margin:20px ;border-radius:40px;  padding:50px">
-    <table class="table table-striped " style="margin:20px ; border-radius:40px;  padding:50px">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Email</th>
-        </tr>
-        {% for student in search_students %}
-        <tr>
-            <td> {{ student.id }}</td>
-            <td> {{ student.name }}</td>
-            <td> {{ student.username}}</td>
-            <td> {{ student.email}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
 {%endblock%}

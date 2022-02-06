@@ -14,8 +14,9 @@ class insertStudentformmodelclass(View):
         context = {}
         form = AddStudent1()
         context['GUI'] = form
+        student = Student.objects.all()
+        context['students'] =student
         return render(request, 'createstudent.html', context)
-
     def post(self, request):
         print('class based post')
         context = {}
@@ -25,34 +26,39 @@ class insertStudentformmodelclass(View):
         context = {'students': student}
         return render(request, 'liststudent.html', context)
 
-
-# Create your views here.z
-@require_GET
-def insertStudennformmodel(request):
-    context = {}
-    form = AddStudent1()
-    if (request.method == 'GET'):
-        context['GUI'] = form
-        return render(request, 'createtrainee.html', context)
-    else:
+class insertStudentformclass(View):
+    def get(self, request):
+        print('class based get')
+        context = {}
+        form = AddStudent()
+        context['form'] = form
+        student = Student.objects.all()
+        context['students'] =student
+        return render(request, 'createstudent2.html', context)
+    def post(self, request):
+        print('class based post')
+        context = {}
         afterpostform = AddStudent1(request.POST)
         afterpostform.save()
         student = Student.objects.all()
         context = {'students': student}
         return render(request, 'liststudent.html', context)
 
-
 class TrackCreateView(CreateView):
     model = Track
     fields = '__all__'
 
+
 class TrackList(ListView):
     model = Track
+
 
 def createstudent(request):
     context = {}
     context['ID'] = 1
     if (request.method == 'GET'):
+        student = Student.objects.all()
+        context = {'students': student}
         return render(request, 'createstudent.html', context)
     else:
         name = request.POST['name']

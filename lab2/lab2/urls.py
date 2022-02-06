@@ -33,5 +33,6 @@ urlpatterns = [
     path('logout/', logout, name='logout'),
     path('Tracklist/', TrackList.as_view(), name="TrackList"),
     path('TrackCreateView', TrackCreateView.as_view(), name='TrackCreateView'),
+    path('createstudent2/', insertStudentformclass.as_view(), name="createstudent2"),
 
 ]

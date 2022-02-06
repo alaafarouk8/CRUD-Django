@@ -1,3 +1,26 @@
+{%extends 'navbar.html'%}
+{% block Title %}
+Track
+{% endblock %}
+
+{%block content%}
+<div class="container bg-light" style="margin:100px ; border-radius:40px; padding:30px">
+    <h1> List of Tracks</h1>
+  <div class="container bg-light justify-content-center" >
+    <table class="table table-striped ">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+
+        </tr>
 {%for t in object_list%}
-{{t.id}} {{t.trackname}}
-{%endfor%}
+        <tr>
+            <td> {{ t.id }}</td>
+            <td> {{ t.trackname }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</div>
+{%endblock%}
