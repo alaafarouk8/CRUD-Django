@@ -9,7 +9,7 @@ from rest_framework import generics
 from myapi.serializers import Studentserializers, Trackserializers
 from students.models import Student, Track
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, mixins
 
 
 # with class based
@@ -68,6 +68,7 @@ class Student_DetailsAPI(APIView):
         student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def student_detail(request, pk):
     try:
@@ -90,14 +91,43 @@ def student_detail(request, pk):
         students.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class GenericStudentAPI(generics.ListCreateAPIView):
+
+class GenericStudentAPI(generics.ListCreateAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
     queryset = Student.objects.all()
     serializer_class = Studentserializers
+
     def list(self, request):
-        # Note the use of `get_queryset()` instead of `self.queryset`
         queryset = self.get_queryset()
         serializer = Studentserializers(queryset, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        return self.create(request)
+
+
+class GenericStudentdetailsAPI(generics.ListCreateAPIView, mixins.ListModelMixin, mixins.DestroyModelMixin,
+                               mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
+    queryset = Student.objects.all()
+    serializer_class = Studentserializers
+    lookup_field = 'id'
+
+    def list(self, request, id=None):
+        if id:
+            return self.retrieve(request)
+        else:
+            return self.list(request)
+
+    def update(self, request, id=None):
+        return self.update(request, id)
+
+    def delete(self, request, id=None):
+        return self.delete(request, id)
+
+
+class StudentViewSet(viewsets.ViewSet):
+    queryset = Student.objects.all()
+    serializer_class = Studentserializers
+
 
 class Tracklist(viewsets.ModelViewSet):
     queryset = Track.objects.all()
