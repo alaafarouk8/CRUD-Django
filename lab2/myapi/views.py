@@ -3,8 +3,9 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework import viewsets, authentication, permissions
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAdminUser
 from rest_framework.views import APIView
-
+from rest_framework import generics
 from myapi.serializers import Studentserializers, Trackserializers
 from students.models import Student, Track
 from rest_framework.response import Response
@@ -67,7 +68,6 @@ class Student_DetailsAPI(APIView):
         student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
 @api_view(['GET', 'PUT', 'DELETE'])
 def student_detail(request, pk):
     try:
@@ -90,6 +90,14 @@ def student_detail(request, pk):
         students.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class GenericStudentAPI(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = Studentserializers
+    def list(self, request):
+        # Note the use of `get_queryset()` instead of `self.queryset`
+        queryset = self.get_queryset()
+        serializer = Studentserializers(queryset, many=True)
+        return Response(serializer.data)
 
 class Tracklist(viewsets.ModelViewSet):
     queryset = Track.objects.all()
