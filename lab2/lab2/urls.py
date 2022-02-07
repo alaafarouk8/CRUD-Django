@@ -14,25 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from home.views import *
 from students.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', register, name="register"),
-    path('about/', about, name="about"),
-    path('login/', login, name="login"),
-    path('contact/', contact, name="contact"),
-    path('', home, name="home"),
-    path('liststudent/', liststudent, name="liststudent"),
-    path('updatestudent/<id>/', updatestudent, name="updatestudent"),
-    path('createstudent/', insertStudentformmodelclass.as_view(), name="createstudent"),
-    path('deletestudent/<id>/', deletestudent, name="deletestudent"),
-    path('searchstudent/', searchstudent, name="searchstudent"),
-    path('logout/', logout, name='logout'),
-    path('Tracklist/', TrackList.as_view(), name="TrackList"),
-    path('TrackCreateView', TrackCreateView.as_view(), name='TrackCreateView'),
-    path('createstudent2/', insertStudentformclass.as_view(), name="createstudent2"),
+    # path('register/', register, name="register"),
+    # path('about/', about, name="about"),
+    # path('login/', login, name="login"),
+    # path('contact/', contact, name="contact"),
+    # path('', home, name="home"),
+    # path('liststudent/', liststudent, name="liststudent"),
+    # path('updatestudent/<id>/', updatestudent, name="updatestudent"),
+    # path('createstudent/', insertStudentformmodelclass.as_view(), name="createstudent"),
+    # path('deletestudent/<id>/', deletestudent, name="deletestudent"),
+    # path('searchstudent/', searchstudent, name="searchstudent"),
+    # path('logout/', logout, name='logout'),
+    # path('Tracklist/', TrackList.as_view(), name="TrackList"),
+    # path('TrackCreateView', TrackCreateView.as_view(), name='TrackCreateView'),
+    # path('createstudent2/', insertStudentformclass.as_view(), name="createstudent2"),
+    # path('', include('rest_framework.urls')),
+    path('', include('myapi.urls'))
 
 ]
